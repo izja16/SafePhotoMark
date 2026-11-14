@@ -8,6 +8,16 @@
 Bundle ID：`app.safephotomark.SafePhotoMark`  
 联系：[izja16xyz@gmail.com](mailto:izja16xyz@gmail.com)
 
+## 下载与安装
+
+当前版本 **3.0**，仅支持 **Apple Silicon Mac**（macOS 14 或更新版本）。
+
+1. 从 [Releases](https://github.com/izja16/SafePhotoMark/releases/latest) 下载 `SafePhotoMark-3.0.dmg`。
+2. 打开磁盘映像，把「脱敏水印」拖到「应用程序」文件夹。
+3. 第一次打开时，请在应用图标上**右键（或 Control-点击）选择「打开」**，并在提示中确认。因为安装包尚未经 Apple 公证，直接双击可能会被系统拦截；这不是应用损坏。
+
+如果你想从源码编译，请看下面的说明。
+
 ## 如何在 Xcode 中打开并运行
 
 请把整个 `SafePhotoMark` 文件夹拷到 Apple Silicon Mac 上。需要 **Xcode 16 或更新版本**（工程使用 Swift 6，并以内嵌本地 Swift 包引用 SwiftDraw）。然后：
