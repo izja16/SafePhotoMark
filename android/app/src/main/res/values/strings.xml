@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Safe Photo Mark</string>
+    <string name="about_app">About %s</string>
+    <string name="about_contact">Contact: %s</string>
+    <string name="about_version">Version %s</string>
+    <string name="about_license">License: MIT</string>
+    <string name="about_privacy_title">Privacy</string>
+    <string name="about_privacy_1">This app does not use the network and has no INTERNET permission.</string>
+    <string name="about_privacy_2">Photos, watermarks, settings, and file names never leave this device. Nothing is uploaded.</string>
+    <string name="about_privacy_3">All processing runs locally. The app only reads and writes files you pick.</string>
+    <string name="alert_import_limit_message">Only the first %1$d of %2$d photos were imported.</string>
+    <string name="alert_import_limit_title">Import Limit Reached</string>
+    <string name="alert_watermark_title">Couldn’t Read Watermark</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_output_folder">Choose Output Folder…</string>
+    <string name="choose_photos">Choose Photos…</string>
+    <string name="choose_photos_files">Choose Files…</string>
+    <string name="choose_photo_folder">Choose Folder…</string>
+    <string name="choose_watermark">Choose Watermark…</string>
+    <string name="choose_watermark_first">Choose a watermark first.</string>
+    <string name="choose_output_first">Choose an output folder first.</string>
+    <string name="clear_list">Clear List</string>
+    <string name="completion_sound">Play a sound when processing finishes</string>
+    <string name="drop_photos_formats">Supports JPEG, PNG, HEIF/HEIC, TIFF, GIF, BMP, and WebP</string>
+    <string name="error_cancelled">Cancelled</string>
+    <string name="error_cannot_convert_color_space">Couldn’t convert the image to sRGB</string>
+    <string name="error_cannot_create_destination">Couldn’t create the output file</string>
+    <string name="error_cannot_create_image">Couldn’t decode the image pixels</string>
+    <string name="error_cannot_open_source">Couldn’t open the image file</string>
+    <string name="error_empty_source">The image file has no usable picture</string>
+    <string name="error_finalize_failed">Failed to write the output file</string>
+    <string name="error_output_folder_missing">No output folder selected</string>
+    <string name="error_target_exists">The destination file already exists and was skipped to avoid overwriting it.</string>
+    <string name="error_unsupported_format">Unsupported image format</string>
+    <string name="error_watermark_invalid">Couldn’t read the watermark (use a transparent PNG or SVG)</string>
+    <string name="error_watermark_missing">No watermark file selected</string>
+    <string name="error_heif_encode">This device cannot encode HEIF. Choose another output format, or use Same as Source only for photos that are not HEIF.</string>
+    <string name="finished_summary">Finished: %1$d succeeded, %2$d failed.</string>
+    <string name="format">Format</string>
+    <string name="format_jpeg">JPEG</string>
+    <string name="format_png">PNG</string>
+    <string name="format_heif">HEIF</string>
+    <string name="format_tiff">TIFF</string>
+    <string name="format_same_as_source">Same as Source</string>
+    <string name="import_photos_first">Import photos first.</string>
+    <string name="mode_fixed">Fixed</string>
+    <string name="mode_manual">Manual</string>
+    <string name="mode_manual_hint">Drag the watermark in the preview to place it.</string>
+    <string name="mode_random">Random</string>
+    <string name="mode_random_hint">Each photo gets a random watermark position that avoids the center 30% of the image.</string>
+    <string name="no_watermark">No watermark selected</string>
+    <string name="ok">OK</string>
+    <string name="opacity">Opacity</string>
+    <string name="output_folder">Output Folder</string>
+    <string name="output_folder_hint">Originals are never overwritten.
+A folder named “Safe Photo Mark Output” is recommended.
+When Random Rename is off, file names keep the original name with a _safephotomark suffix.</string>
+    <string name="output_folder_none">Not selected yet (a “Safe Photo Mark Output” folder is recommended)</string>
+    <string name="photos_count">%d Photos</string>
+    <string name="pos_bottom_center">Bottom Center</string>
+    <string name="pos_bottom_left">Bottom Left</string>
+    <string name="pos_bottom_right">Bottom Right</string>
+    <string name="pos_center">Center</string>
+    <string name="pos_middle_left">Middle Left</string>
+    <string name="pos_middle_right">Middle Right</string>
+    <string name="pos_top_center">Top Center</string>
+    <string name="pos_top_left">Top Left</string>
+    <string name="pos_top_right">Top Right</string>
+    <string name="position">Placement</string>
+    <string name="preview_drag_hint">Drag the watermark to adjust its position for this photo.</string>
+    <string name="preview_empty">Tap “Choose Photos”, or import files or a folder.</string>
+    <string name="preview_failed">Couldn’t generate preview: %s</string>
+    <string name="preview_need_watermark">Choose a PNG or SVG watermark to preview the overlay.</string>
+    <string name="preview_select_photo">Select a photo to preview the watermark</string>
+    <string name="privacy_note">All processing happens on this device and never uses the network.</string>
+    <string name="processing_progress">Processing %1$d of %2$d</string>
+    <string name="quality">Quality</string>
+    <string name="quality_hint">Used for JPEG and HEIF.
+If you choose “Same as Source” and a photo exports as one of those formats, this quality setting is used.
+16-bit and wide-gamut sources such as Display P3 are written as 8-bit sRGB.</string>
+    <string name="random_rename">Random Rename</string>
+    <string name="random_rename_hint">When this is on, exported files use a random name instead of the original.
+This helps keep dates out of names like IMGXXXX-XX-XX.</string>
+    <string name="refuse_overwrite">Refusing to overwrite the original</string>
+    <string name="remember_settings">Remember Last Settings</string>
+    <string name="remember_settings_hint">When this is on, the next launch keeps all settings, including:
+the watermark, size, opacity, placement mode (Manual / Random / Fixed), and placement;
+output format, quality, and output folder;
+metadata removal, random rename, and the completion sound.
+
+When this is off, the next launch returns to the defaults.</string>
+    <string name="remove_from_list">Remove from List</string>
+    <string name="reroll_position">Try Another Position</string>
+    <string name="reset_position">Reset Position</string>
+    <string name="section_output">Output</string>
+    <string name="section_processing">Processing</string>
+    <string name="section_watermark">Watermark</string>
+    <string name="open_output_folder">Open Output Folder</string>
+    <string name="size">Size</string>
+    <string name="size_hint">The watermark width is a percentage of the photo’s shorter side, and the original aspect ratio is kept.</string>
+    <string name="start_processing">Start Processing</string>
+    <string name="status_failed">Failed: %s</string>
+    <string name="status_processing">Processing</string>
+    <string name="status_succeeded">Done</string>
+    <string name="status_waiting">Waiting</string>
+    <string name="strip_metadata">Remove Metadata</string>
+    <string name="strip_metadata_hint">When this is on, exported files have all metadata from the original removed, including:
+Camera settings (camera, lens, shutter, aperture, ISO, focal length, and other EXIF data)
+Date and time taken, and location (GPS)
+Captions, keywords, copyright, and other IPTC / XMP fields
+Manufacturer private data (MakerNote)
+Embedded thumbnails and other auxiliary metadata
+Camera-specific ICC color profiles (output is standardized to sRGB)
+
+When this is off, those shooting details are kept as much as possible.
+The orientation tag is rewritten to “up” because the pixels are already rotated upright.
+The original embedded thumbnail is still omitted so an unwatermarked preview is not carried over.
+16-bit and wide-gamut sources such as Display P3 are written as 8-bit sRGB.</string>
+    <string name="importing">Importing…</string>
+    <string name="contact_email">izja16xyz@gmail.com</string>
+</resources>

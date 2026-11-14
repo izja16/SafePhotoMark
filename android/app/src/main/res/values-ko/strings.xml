@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Safe Photo Mark</string>
+    <string name="about_app">%s 정보</string>
+    <string name="about_contact">연락처: %s</string>
+    <string name="about_version">버전 %s</string>
+    <string name="about_license">라이선스: MIT</string>
+    <string name="about_privacy_title">개인정보</string>
+    <string name="about_privacy_1">이 앱은 네트워크를 사용하지 않으며 INTERNET 권한도 없습니다.</string>
+    <string name="about_privacy_2">사진, 워터마크, 설정, 파일 이름은 이 기기를 떠나지 않으며 업로드되지 않습니다.</string>
+    <string name="about_privacy_3">모든 처리는 이 기기에서 이루어지며, 선택한 파일과 폴더만 읽고 씁니다.</string>
+    <string name="alert_import_limit_message">발견된 %2$d장 중 처음 %1$d장만 가져왔습니다.</string>
+    <string name="alert_import_limit_title">가져오기 한도에 도달했습니다</string>
+    <string name="alert_watermark_title">워터마크를 읽을 수 없음</string>
+    <string name="cancel">취소</string>
+    <string name="choose_output_folder">출력 폴더 선택…</string>
+    <string name="choose_photos">사진 선택…</string>
+    <string name="choose_photos_files">파일 선택…</string>
+    <string name="choose_photo_folder">폴더 선택…</string>
+    <string name="choose_watermark">워터마크 선택…</string>
+    <string name="choose_watermark_first">먼저 워터마크를 선택하세요.</string>
+    <string name="choose_output_first">먼저 출력 폴더를 선택하세요.</string>
+    <string name="clear_list">목록 지우기</string>
+    <string name="completion_sound">처리가 끝나면 알림음 재생</string>
+    <string name="drop_photos_formats">JPEG, PNG, HEIF/HEIC, TIFF, GIF, BMP, WebP를 지원합니다</string>
+    <string name="error_cancelled">취소됨</string>
+    <string name="error_cannot_convert_color_space">이미지를 sRGB로 변환할 수 없습니다</string>
+    <string name="error_cannot_create_destination">출력 파일을 만들 수 없습니다</string>
+    <string name="error_cannot_create_image">이미지 픽셀을 디코딩할 수 없습니다</string>
+    <string name="error_cannot_open_source">이미지 파일을 열 수 없습니다</string>
+    <string name="error_empty_source">이미지 파일에 사용할 화면이 없습니다</string>
+    <string name="error_finalize_failed">출력 파일 쓰기에 실패했습니다</string>
+    <string name="error_output_folder_missing">출력 폴더가 선택되지 않았습니다</string>
+    <string name="error_target_exists">대상 파일이 이미 있어 덮어쓰기를 피하려고 건너뛰었습니다.</string>
+    <string name="error_unsupported_format">지원하지 않는 이미지 형식입니다</string>
+    <string name="error_watermark_invalid">워터마크를 읽을 수 없습니다(투명 배경 PNG 또는 SVG를 사용하세요)</string>
+    <string name="error_watermark_missing">워터마크 파일이 선택되지 않았습니다</string>
+    <string name="error_heif_encode">이 기기는 HEIF를 인코딩할 수 없습니다. 다른 출력 형식을 선택하세요. ‘원본과 동일’으로 HEIF 사진을 처리할 때도 JPEG로 몰래 바꾸지 않고 실패합니다.</string>
+    <string name="finished_summary">완료: 성공 %1$d장, 실패 %2$d장.</string>
+    <string name="format">형식</string>
+    <string name="format_jpeg">JPEG</string>
+    <string name="format_png">PNG</string>
+    <string name="format_heif">HEIF</string>
+    <string name="format_tiff">TIFF</string>
+    <string name="format_same_as_source">원본과 동일</string>
+    <string name="import_photos_first">먼저 사진을 가져오세요.</string>
+    <string name="mode_fixed">고정</string>
+    <string name="mode_manual">수동</string>
+    <string name="mode_manual_hint">미리보기에서 워터마크를 드래그하여 위치를 지정하세요.</string>
+    <string name="mode_random">무작위</string>
+    <string name="mode_random_hint">각 사진의 워터마크는 화면 중앙 30%를 피해 무작위로 배치됩니다.</string>
+    <string name="no_watermark">워터마크가 선택되지 않았습니다</string>
+    <string name="ok">확인</string>
+    <string name="opacity">불투명도</string>
+    <string name="output_folder">출력 폴더</string>
+    <string name="output_folder_hint">원본은 덮어쓰지 않습니다.
+‘Safe Photo Mark 출력’이라는 폴더를 권장합니다.
+‘무작위 이름 변경’이 꺼져 있으면 파일 이름은 원본 이름에 _safephotomark 접미사를 붙입니다.</string>
+    <string name="output_folder_none">아직 선택하지 않음(‘Safe Photo Mark 출력’ 폴더를 권장합니다)</string>
+    <string name="photos_count">%d장</string>
+    <string name="pos_bottom_center">아래쪽 가운데</string>
+    <string name="pos_bottom_left">왼쪽 아래</string>
+    <string name="pos_bottom_right">오른쪽 아래</string>
+    <string name="pos_center">가운데</string>
+    <string name="pos_middle_left">왼쪽 가운데</string>
+    <string name="pos_middle_right">오른쪽 가운데</string>
+    <string name="pos_top_center">위쪽 가운데</string>
+    <string name="pos_top_left">왼쪽 위</string>
+    <string name="pos_top_right">오른쪽 위</string>
+    <string name="position">배치</string>
+    <string name="preview_drag_hint">워터마크를 드래그하여 이 사진의 위치를 조정할 수 있습니다.</string>
+    <string name="preview_empty">‘사진 선택’을 누르거나 파일이나 폴더에서 가져오세요.</string>
+    <string name="preview_failed">미리보기를 만들 수 없음: %s</string>
+    <string name="preview_need_watermark">오버레이를 미리보려면 먼저 PNG 또는 SVG 워터마크를 선택하세요.</string>
+    <string name="preview_select_photo">사진을 선택해 워터마크를 미리보세요</string>
+    <string name="privacy_note">모든 처리는 이 기기에서 이루어지며 네트워크에 접속하지 않습니다.</string>
+    <string name="processing_progress">처리 중 %1$d / %2$d</string>
+    <string name="quality">품질</string>
+    <string name="quality_hint">JPEG / HEIF에 사용됩니다.
+‘원본과 동일’을 선택했고 해당 사진이 이 형식으로 내보내지는 경우에도 이 품질이 적용됩니다.
+16비트 및 Display P3 같은 넓은 색역의 원본은 8비트 sRGB로 변환되어 저장됩니다.</string>
+    <string name="random_rename">무작위 이름 변경</string>
+    <string name="random_rename_hint">켜면 내보낸 파일이 원본 이름 대신 무작위 이름을 사용합니다.
+IMGXXXX-XX-XX와 같은 파일 이름에서 촬영 날짜가 드러나는 것을 막을 수 있습니다.</string>
+    <string name="refuse_overwrite">원본 덮어쓰기를 거부했습니다</string>
+    <string name="remember_settings">마지막 설정 유지</string>
+    <string name="remember_settings_hint">켜면 다음에 열 때 모든 설정이 유지됩니다. 포함되는 항목은 다음과 같습니다.
+워터마크, 크기, 불투명도, 위치 방식(수동 / 무작위 / 고정), 배치,
+출력 형식, 품질, 출력 폴더,
+메타데이터 제거, 무작위 이름 변경, 완료 알림음.
+
+끄면 다음 실행 시 기본 설정으로 돌아갑니다.</string>
+    <string name="remove_from_list">목록에서 제거</string>
+    <string name="reroll_position">다른 위치 시도</string>
+    <string name="reset_position">기본 위치로</string>
+    <string name="section_output">출력</string>
+    <string name="section_processing">처리</string>
+    <string name="section_watermark">워터마크</string>
+    <string name="open_output_folder">출력 폴더 열기</string>
+    <string name="size">크기</string>
+    <string name="size_hint">워터마크 너비는 사진의 짧은 변에 대한 비율이며, 원래 비율을 유지합니다.</string>
+    <string name="start_processing">처리 시작</string>
+    <string name="status_failed">실패: %s</string>
+    <string name="status_processing">처리 중</string>
+    <string name="status_succeeded">완료됨</string>
+    <string name="status_waiting">대기 중</string>
+    <string name="strip_metadata">메타데이터 제거</string>
+    <string name="strip_metadata_hint">켜면 내보낸 파일에서 원본의 모든 메타데이터가 제거됩니다. 포함되는 항목은 다음과 같습니다.
+촬영 정보(카메라, 렌즈, 셔터, 조리개, ISO, 초점 거리 등 EXIF 데이터)
+촬영 날짜와 시간, 위치(GPS)
+설명·키워드·저작권 등 IPTC / XMP 정보
+제조사 고유 데이터(MakerNote)
+포함된 썸네일 등 부가 메타데이터
+카메라 고유 ICC 색상 프로필(출력은 sRGB로 통일)
+
+끄면 이러한 촬영 정보는 가능한 한 유지됩니다.
+픽셀이 이미 올바른 방향으로 회전되어 있으므로 방향 태그는 ‘위쪽’으로 다시 기록됩니다.
+워터마크가 없는 미리보기가 남지 않도록 원본에 포함된 썸네일은 계속 제외됩니다.
+16비트 및 Display P3 같은 넓은 색역의 원본은 8비트 sRGB로 변환되어 저장됩니다.</string>
+    <string name="importing">가져오는 중…</string>
+    <string name="contact_email">izja16xyz@gmail.com</string>
+</resources>

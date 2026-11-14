@@ -285,3 +285,6 @@ footer a:hover { color: var(--text); }
   nav .gh { display: none; }
   nav .cta { padding: 6px 12px; }
 }
+
+.android-beta { margin-top: 40px; }
+.android-beta h3 { font-size: 22px; letter-spacing: -0.03em; margin: 0 0 10px; }

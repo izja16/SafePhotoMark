@@ -43,6 +43,14 @@
 
 소개 페이지: [izja16.github.io/SafePhotoMark](https://izja16.github.io/SafePhotoMark/)
 
+## Android 버전(공개 베타)
+
+Android 버전도 **3.0**으로 맞춰 두었습니다. 휴대폰과 태블릿을 지원하며, 마찬가지로 **오프라인으로 실행되고 어떤 정보도 업로드하지 않습니다**. 지금은 공개 베타이며 알려진 문제가 많습니다. 정식 버전을 기다려 주세요.
+
+**Android 8.0 이상**이 필요합니다. [Releases](https://github.com/izja16/SafePhotoMark/releases/latest)에서 `SafePhotoMark-3.0.apk`를 받으세요. 시스템이 ‘알 수 없는 출처’ 설치를 막으면 안내에 따라 허용하면 됩니다. 앱이 손상된 것은 아닙니다.
+
+소스 코드는 [`android/`](android/) 디렉터리에 있습니다.
+
 ## 지원 형식
 
 **입력:** JPEG, PNG, HEIF/HEIC(`.heic`, `.heif`, `.hif`), TIFF, GIF, BMP, 그리고 macOS 14+가 읽을 수 있는 WebP.
@@ -100,6 +108,7 @@ README.en.md                English
 README.ja.md                日本語
 README.ko.md                한국어
 LICENSE
+android/                    Android 버전 소스(공개 베타)
 ```
 
 ## 라이선스

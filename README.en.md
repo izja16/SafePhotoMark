@@ -43,6 +43,14 @@ Version **3.0** requires **Apple M1 or later**, and macOS 14 or later.
 
 Website: [izja16.github.io/SafePhotoMark](https://izja16.github.io/SafePhotoMark/)
 
+## Android edition (public beta)
+
+The Android edition is also at **3.0**, for phones and tablets. It likewise **runs offline and uploads nothing**. This is a public beta with many known issues; please wait for the official release.
+
+It requires **Android 8.0 or later**. Download `SafePhotoMark-3.0.apk` from [Releases](https://github.com/izja16/SafePhotoMark/releases/latest). If Android blocks “unknown sources,” allow that install. This does not mean the APK is damaged.
+
+Source is in the [`android/`](android/) directory.
+
 ## Supported formats
 
 **Input:** JPEG, PNG, HEIF/HEIC (`.heic`, `.heif`, `.hif`), TIFF, GIF, BMP, and WebP when macOS 14+ can decode it.
@@ -100,6 +108,7 @@ README.en.md                English
 README.ja.md                Japanese
 README.ko.md                Korean
 LICENSE
+android/                    Android edition source (public beta)
 ```
 
 ## License

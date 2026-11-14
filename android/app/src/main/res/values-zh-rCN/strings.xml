@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">脱敏水印</string>
+    <string name="about_app">关于 %s</string>
+    <string name="about_contact">联系：%s</string>
+    <string name="about_version">版本 %s</string>
+    <string name="about_license">许可证：MIT</string>
+    <string name="about_privacy_title">隐私</string>
+    <string name="about_privacy_1">本应用不联网，也没有网络权限。</string>
+    <string name="about_privacy_2">照片、水印、设置和文件名都不会离开这台设备，也不会上传任何信息。</string>
+    <string name="about_privacy_3">全部处理都在本地完成。应用只读写你选中的文件和文件夹。</string>
+    <string name="alert_import_limit_message">仅导入前 %1$d 张（共发现 %2$d 张）。</string>
+    <string name="alert_import_limit_title">导入数量已达上限</string>
+    <string name="alert_watermark_title">无法读取水印</string>
+    <string name="cancel">取消</string>
+    <string name="choose_output_folder">选择输出文件夹…</string>
+    <string name="choose_photos">选择照片…</string>
+    <string name="choose_photos_files">从文件选择…</string>
+    <string name="choose_photo_folder">选择文件夹…</string>
+    <string name="choose_watermark">选择水印…</string>
+    <string name="choose_watermark_first">请先选择水印。</string>
+    <string name="choose_output_first">请先选择输出文件夹。</string>
+    <string name="clear_list">清空列表</string>
+    <string name="completion_sound">处理完成时播放提示音</string>
+    <string name="drop_photos_formats">支持 JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP、WebP</string>
+    <string name="error_cancelled">已取消</string>
+    <string name="error_cannot_convert_color_space">无法将图片转换到 sRGB</string>
+    <string name="error_cannot_create_destination">无法创建输出文件</string>
+    <string name="error_cannot_create_image">无法解码图片像素</string>
+    <string name="error_cannot_open_source">无法打开图片文件</string>
+    <string name="error_empty_source">图片文件没有可用的画面</string>
+    <string name="error_finalize_failed">写入输出文件失败</string>
+    <string name="error_output_folder_missing">尚未选择输出文件夹</string>
+    <string name="error_target_exists">目标文件已存在，已跳过以免覆盖。</string>
+    <string name="error_unsupported_format">不支持的图片格式</string>
+    <string name="error_watermark_invalid">无法读取水印（请使用透明底 PNG 或 SVG）</string>
+    <string name="error_watermark_missing">尚未选择水印文件</string>
+    <string name="error_heif_encode">此设备无法编码 HEIF。请改选其他输出格式；若使用「与原图相同」，遇到 HEIF 原图时也会失败，而不会悄悄改存为 JPEG。</string>
+    <string name="finished_summary">完成：成功 %1$d 张，失败 %2$d 张。</string>
+    <string name="format">格式</string>
+    <string name="format_jpeg">JPEG</string>
+    <string name="format_png">PNG</string>
+    <string name="format_heif">HEIF</string>
+    <string name="format_tiff">TIFF</string>
+    <string name="format_same_as_source">与原图相同</string>
+    <string name="import_photos_first">请先导入照片。</string>
+    <string name="mode_fixed">固定</string>
+    <string name="mode_manual">手动</string>
+    <string name="mode_manual_hint">请手动在预览区移动水印。</string>
+    <string name="mode_random">随机</string>
+    <string name="mode_random_hint">每张照片的水印会随机放置，并避开画面中心 30% 区域。</string>
+    <string name="no_watermark">尚未选择水印</string>
+    <string name="ok">好</string>
+    <string name="opacity">不透明度</string>
+    <string name="output_folder">输出文件夹</string>
+    <string name="output_folder_hint">原图不会被覆盖。
+建议使用名为「脱敏水印输出」的文件夹。
+关闭「随机重命名」时，文件名保留原名并加上 _safephotomark 后缀。</string>
+    <string name="output_folder_none">尚未选择（建议新建「脱敏水印输出」）</string>
+    <string name="photos_count">%d 张</string>
+    <string name="pos_bottom_center">中下</string>
+    <string name="pos_bottom_left">左下</string>
+    <string name="pos_bottom_right">右下</string>
+    <string name="pos_center">居中</string>
+    <string name="pos_middle_left">左中</string>
+    <string name="pos_middle_right">右中</string>
+    <string name="pos_top_center">中上</string>
+    <string name="pos_top_left">左上</string>
+    <string name="pos_top_right">右上</string>
+    <string name="position">方位</string>
+    <string name="preview_drag_hint">拖动水印可调整这张照片的位置。</string>
+    <string name="preview_empty">点按「选择照片」，或从文件、文件夹导入。</string>
+    <string name="preview_failed">无法生成预览：%s</string>
+    <string name="preview_need_watermark">请先选择 PNG 或 SVG 水印，以便预览叠加效果。</string>
+    <string name="preview_select_photo">选择一张照片以预览水印效果</string>
+    <string name="privacy_note">全部处理都在本机完成，不会访问网络。</string>
+    <string name="processing_progress">正在处理 %1$d / %2$d</string>
+    <string name="quality">质量</string>
+    <string name="quality_hint">仅用于 JPEG / HEIF。
+选择「与原图相同」时，若某张原图会导出为这两种格式，也将使用此质量。
+16 位和 Display P3 等广色域原图会转换为 8 位 sRGB 后再写出。</string>
+    <string name="random_rename">随机重命名</string>
+    <string name="random_rename_hint">开启后，输出文件会使用随机文件名，不再保留原名。
+这样可避免像 IMGXXXX-XX-XX 这类文件名暴露拍照日期。</string>
+    <string name="refuse_overwrite">拒绝覆盖原图</string>
+    <string name="remember_settings">保持上次设置</string>
+    <string name="remember_settings_hint">开启后，下次打开会沿用全部设置，包括：
+水印、大小、不透明度、位置方式（手动 / 随机 / 固定）、方位、
+输出格式、质量、输出文件夹、
+移除元数据、随机重命名和完成提示音。
+
+关闭后，下次启动将恢复为默认设置。</string>
+    <string name="remove_from_list">从列表中移除</string>
+    <string name="reroll_position">换一个位置</string>
+    <string name="reset_position">恢复默认位置</string>
+    <string name="section_output">输出</string>
+    <string name="section_processing">处理</string>
+    <string name="section_watermark">水印</string>
+    <string name="open_output_folder">打开输出文件夹</string>
+    <string name="size">大小</string>
+    <string name="size_hint">水印宽度为照片较短边的百分比，保持原有比例。</string>
+    <string name="start_processing">开始处理</string>
+    <string name="status_failed">失败：%s</string>
+    <string name="status_processing">处理中</string>
+    <string name="status_succeeded">已完成</string>
+    <string name="status_waiting">等待处理</string>
+    <string name="strip_metadata">移除元数据</string>
+    <string name="strip_metadata_hint">开启后，输出文件会清除原图中的全部元数据，包括：
+拍摄参数（相机、镜头、快门、光圈、ISO、焦距等 EXIF 信息）
+拍摄时间、地理位置（GPS）
+描述、关键词、版权等 IPTC / XMP 信息
+厂家私有数据（MakerNote）
+原图缩略图及其他附加信息
+相机自带的 ICC 颜色配置文件（输出统一为 sRGB）
+
+关闭后会尽量保留这些拍摄信息。
+方向标签会改写为正向，因为画面已经转正。
+原图缩略图仍会去掉，以免带出未加水印的预览。
+16 位和 Display P3 等广色域原图会转换为 8 位 sRGB 后再写出。</string>
+    <string name="importing">正在导入…</string>
+    <string name="contact_email">izja16xyz@gmail.com</string>
+</resources>

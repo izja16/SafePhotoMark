@@ -43,6 +43,14 @@
 
 紹介ページ：[izja16.github.io/SafePhotoMark](https://izja16.github.io/SafePhotoMark/)
 
+## Android 版（公開ベータ）
+
+Android 版も **3.0** に揃えました。スマートフォンとタブレットに対応し、同様に**オフラインで動作し、情報は一切アップロードしません**。現時点では公開ベータであり、既知の不具合がかなりあります。正式版をお待ちください。
+
+**Android 8.0 以降**が必要です。[Releases](https://github.com/izja16/SafePhotoMark/releases/latest) から `SafePhotoMark-3.0.apk` を入手してください。システムが「不明な提供元」からのインストールをブロックした場合は、指示に従って許可してください。アプリが壊れているわけではありません。
+
+ソースは [`android/`](android/) ディレクトリにあります。
+
 ## 対応形式
 
 **入力：** JPEG、PNG、HEIF/HEIC（`.heic`、`.heif`、`.hif`）、TIFF、GIF、BMP、および macOS 14+ が読める WebP。
@@ -100,6 +108,7 @@ README.en.md                English
 README.ja.md                日本語
 README.ko.md                한국어
 LICENSE
+android/                    Android 版ソース（公開ベータ）
 ```
 
 ## ライセンス

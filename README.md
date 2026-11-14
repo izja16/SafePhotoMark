@@ -43,6 +43,14 @@
 
 介绍页：[izja16.github.io/SafePhotoMark](https://izja16.github.io/SafePhotoMark/)
 
+## Android 版本（公测）
+
+Android 版已同步到 **3.0**，适配手机和平板，同样**不联网，不上传任何信息**。当前仅为公测，已知问题还比较多，正式版敬请期待。
+
+需要 **Android 8.0 或更新版本**。从 [Releases](https://github.com/izja16/SafePhotoMark/releases/latest) 下载 `SafePhotoMark-3.0.apk`。安装时若系统提示「禁止安装未知来源应用」，请按提示允许，这不是应用损坏。
+
+源码在仓库的 [`android/`](android/) 目录。
+
 ## 支持的格式
 
 **输入：** JPEG、PNG、HEIF/HEIC（`.heic`、`.heif`、`.hif`）、TIFF、GIF、BMP，以及 macOS 14+ 能读取的 WebP。
@@ -100,6 +108,7 @@ README.en.md                English
 README.ja.md                日本語
 README.ko.md                한국어
 LICENSE
+android/                    Android 版源码（公测）
 ```
 
 ## 许可证

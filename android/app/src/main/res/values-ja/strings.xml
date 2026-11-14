@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Safe Photo Mark</string>
+    <string name="about_app">%sについて</string>
+    <string name="about_contact">連絡先：%s</string>
+    <string name="about_version">バージョン %s</string>
+    <string name="about_license">ライセンス：MIT</string>
+    <string name="about_privacy_title">プライバシー</string>
+    <string name="about_privacy_1">このアプリはネットワークを使わず、INTERNET 権限もありません。</string>
+    <string name="about_privacy_2">写真、透かし、設定、ファイル名はこの端末から出ません。アップロードしません。</string>
+    <string name="about_privacy_3">すべての処理は端末上で行われます。選択したファイルとフォルダだけを読み書きします。</string>
+    <string name="alert_import_limit_message">見つかった %2$d 枚のうち、先頭の %1$d 枚だけを読み込みました。</string>
+    <string name="alert_import_limit_title">読み込み数の上限に達しました</string>
+    <string name="alert_watermark_title">透かしを読み込めません</string>
+    <string name="cancel">キャンセル</string>
+    <string name="choose_output_folder">出力フォルダを選択…</string>
+    <string name="choose_photos">写真を選択…</string>
+    <string name="choose_photos_files">ファイルを選択…</string>
+    <string name="choose_photo_folder">フォルダを選択…</string>
+    <string name="choose_watermark">透かしを選択…</string>
+    <string name="choose_watermark_first">先に透かしを選択してください。</string>
+    <string name="choose_output_first">先に出力フォルダを選択してください。</string>
+    <string name="clear_list">リストをクリア</string>
+    <string name="completion_sound">処理完了時に音を鳴らす</string>
+    <string name="drop_photos_formats">JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP、WebP に対応</string>
+    <string name="error_cancelled">キャンセルしました</string>
+    <string name="error_cannot_convert_color_space">画像を sRGB に変換できません</string>
+    <string name="error_cannot_create_destination">出力ファイルを作成できません</string>
+    <string name="error_cannot_create_image">画像のピクセルを復号できません</string>
+    <string name="error_cannot_open_source">画像ファイルを開けません</string>
+    <string name="error_empty_source">画像ファイルに表示できる画面がありません</string>
+    <string name="error_finalize_failed">出力ファイルの書き込みに失敗しました</string>
+    <string name="error_output_folder_missing">出力フォルダが選択されていません</string>
+    <string name="error_target_exists">出力先のファイルが既に存在するため、上書きを避けるためにスキップしました。</string>
+    <string name="error_unsupported_format">未対応の画像形式です</string>
+    <string name="error_watermark_invalid">透かしを読み込めません（透明背景の PNG または SVG を使用してください）</string>
+    <string name="error_watermark_missing">透かしファイルが選択されていません</string>
+    <string name="error_heif_encode">この端末では HEIF を書き出せません。別の出力形式を選んでください。「ソースと同じ」で HEIF の写真を処理した場合も、JPEG に自動では切り替えず失敗します。</string>
+    <string name="finished_summary">完了：成功 %1$d 枚、失敗 %2$d 枚。</string>
+    <string name="format">形式</string>
+    <string name="format_jpeg">JPEG</string>
+    <string name="format_png">PNG</string>
+    <string name="format_heif">HEIF</string>
+    <string name="format_tiff">TIFF</string>
+    <string name="format_same_as_source">ソースと同じ</string>
+    <string name="import_photos_first">先に写真を読み込んでください。</string>
+    <string name="mode_fixed">固定</string>
+    <string name="mode_manual">手動</string>
+    <string name="mode_manual_hint">プレビューで透かしをドラッグして位置を合わせてください。</string>
+    <string name="mode_random">ランダム</string>
+    <string name="mode_random_hint">各写真の透かしは、画面中央 30% を避けてランダムに配置されます。</string>
+    <string name="no_watermark">透かし未選択</string>
+    <string name="ok">OK</string>
+    <string name="opacity">不透明度</string>
+    <string name="output_folder">出力フォルダ</string>
+    <string name="output_folder_hint">元の写真は上書きされません。
+「Safe Photo Mark出力」というフォルダの使用をおすすめします。
+「ランダムに名前を変更」がオフのときは、ファイル名は元の名前に _safephotomark を付けたものになります。</string>
+    <string name="output_folder_none">未選択（「Safe Photo Mark出力」フォルダの作成をおすすめします）</string>
+    <string name="photos_count">%d 枚</string>
+    <string name="pos_bottom_center">下</string>
+    <string name="pos_bottom_left">左下</string>
+    <string name="pos_bottom_right">右下</string>
+    <string name="pos_center">中央</string>
+    <string name="pos_middle_left">左</string>
+    <string name="pos_middle_right">右</string>
+    <string name="pos_top_center">上</string>
+    <string name="pos_top_left">左上</string>
+    <string name="pos_top_right">右上</string>
+    <string name="position">配置</string>
+    <string name="preview_drag_hint">透かしをドラッグして、この写真の位置を調整できます。</string>
+    <string name="preview_empty">「写真を選択」をタップするか、ファイルやフォルダから読み込んでください。</string>
+    <string name="preview_failed">プレビューを生成できませんでした：%s</string>
+    <string name="preview_need_watermark">プレビューするには、先に PNG または SVG の透かしを選択してください。</string>
+    <string name="preview_select_photo">写真を選んで透かしのプレビューを表示</string>
+    <string name="privacy_note">すべての処理はこの端末上で行われ、ネットワークには接続しません。</string>
+    <string name="processing_progress">処理中 %1$d / %2$d</string>
+    <string name="quality">品質</string>
+    <string name="quality_hint">JPEG / HEIF に使用します。
+「ソースと同じ」を選び、その写真がこれらの形式で書き出される場合も、この品質が使われます。
+16 ビットや Display P3 などの広色域の元画像は、8 ビット sRGB に変換して書き出されます。</string>
+    <string name="random_rename">ランダムに名前を変更</string>
+    <string name="random_rename_hint">オンにすると、書き出しファイルは元の名前を使わず、ランダムな名前になります。
+IMGXXXX-XX-XX のようなファイル名から撮影日が漏れるのを防げます。</string>
+    <string name="refuse_overwrite">元の写真の上書きを拒否しました</string>
+    <string name="remember_settings">前回の設定を保持</string>
+    <string name="remember_settings_hint">オンにすると、次回起動時にすべての設定が保持されます。対象は次のとおりです。
+透かし、サイズ、不透明度、配置方法（手動 / ランダム / 固定）、配置、
+出力形式、品質、出力フォルダ、
+メタデータの削除、ランダムな名前の変更、完了音。
+
+オフにすると、次回起動時は初期設定に戻ります。</string>
+    <string name="remove_from_list">リストから削除</string>
+    <string name="reroll_position">別の位置にする</string>
+    <string name="reset_position">位置をリセット</string>
+    <string name="section_output">出力</string>
+    <string name="section_processing">処理</string>
+    <string name="section_watermark">透かし</string>
+    <string name="open_output_folder">出力フォルダを開く</string>
+    <string name="size">サイズ</string>
+    <string name="size_hint">透かしの幅は写真の短辺に対する割合で、元の縦横比を保ちます。</string>
+    <string name="start_processing">処理を開始</string>
+    <string name="status_failed">失敗：%s</string>
+    <string name="status_processing">処理中</string>
+    <string name="status_succeeded">完了</string>
+    <string name="status_waiting">待機中</string>
+    <string name="strip_metadata">メタデータを削除</string>
+    <string name="strip_metadata_hint">オンにすると、書き出したファイルから元の写真のメタデータがすべて削除されます。対象は次のとおりです。
+撮影設定（カメラ、レンズ、シャッター、絞り、ISO、焦点距離などの EXIF 情報）
+撮影日時、位置情報（GPS）
+説明・キーワード・著作権などの IPTC / XMP 情報
+メーカー独自データ（MakerNote）
+埋め込みサムネイルなどの付加情報
+カメラ固有の ICC カラープロファイル（出力は sRGB に統一）
+
+オフにすると、これらの撮影情報は可能な範囲で保持されます。
+画素はすでに正立しているため、向きタグは「上」に書き直されます。
+透かしのないプレビューが残らないよう、元の埋め込みサムネイルは引き続き省きます。
+16 ビットや Display P3 などの広色域の元画像は、8 ビット sRGB に変換して書き出されます。</string>
+    <string name="importing">読み込み中…</string>
+    <string name="contact_email">izja16xyz@gmail.com</string>
+</resources>
