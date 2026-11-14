@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3F0EA">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121311">
+  <title>脱敏水印 Safe Photo Mark</title>
+  <meta name="description" content="脱敏水印 Safe Photo Mark：在 Apple 芯片 Mac 上为照片批量添加水印，并在导出时清除元数据。全部本地处理。">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #F3F0EA;
+      --bg-accent: #E8E3D8;
+      --surface: rgba(255, 252, 247, 0.72);
+      --surface-solid: #FFFcf7;
+      --ink: #1C1B18;
+      --muted: #5C5953;
+      --line: rgba(28, 27, 24, 0.1);
+      --seal: #B3392D;
+      --seal-soft: rgba(179, 57, 45, 0.12);
+      --shadow: 0 20px 50px rgba(40, 32, 20, 0.08), 0 1px 0 rgba(255,255,255,0.7) inset;
+      --radius: 22px;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Noto Sans JP", "Hiragino Sans", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      --serif: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif CJK SC", "Hiragino Mincho ProN", "Yu Mincho", "Apple Myungjo", "Times New Roman", serif;
+      --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #121311;
+        --bg-accent: #1B1C19;
+        --surface: rgba(32, 33, 29, 0.72);
+        --surface-solid: #22231F;
+        --ink: #EDEBE4;
+        --muted: #A8A59C;
+        --line: rgba(237, 235, 228, 0.12);
+        --seal: #E15A4C;
+        --seal-soft: rgba(225, 90, 76, 0.16);
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255,255,255,0.04) inset;
+      }
+    }
+
+    html[data-theme="dark"] {
+      --bg: #121311;
+      --bg-accent: #1B1C19;
+      --surface: rgba(32, 33, 29, 0.72);
+      --surface-solid: #22231F;
+      --ink: #EDEBE4;
+      --muted: #A8A59C;
+      --line: rgba(237, 235, 228, 0.12);
+      --seal: #E15A4C;
+      --seal-soft: rgba(225, 90, 76, 0.16);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+
+    html[data-theme="light"] {
+      --bg: #F3F0EA;
+      --bg-accent: #E8E3D8;
+      --surface: rgba(255, 252, 247, 0.72);
+      --surface-solid: #FFFcf7;
+      --ink: #1C1B18;
+      --muted: #5C5953;
+      --line: rgba(28, 27, 24, 0.1);
+      --seal: #B3392D;
+      --seal-soft: rgba(179, 57, 45, 0.12);
+      --shadow: 0 20px 50px rgba(40, 32, 20, 0.08), 0 1px 0 rgba(255,255,255,0.7) inset;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, var(--seal-soft), transparent 55%),
+        radial-gradient(900px 500px at -10% 20%, var(--bg-accent), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a { color: var(--seal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(22px) saturate(1.2);
+      -webkit-backdrop-filter: blur(22px) saturate(1.2);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .brand:hover { text-decoration: none; }
+    .seal {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: var(--seal);
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1;
+      box-shadow: 0 6px 16px rgba(179, 57, 45, 0.28);
+    }
+    .brand-name { letter-spacing: 0.04em; }
+    .brand-en { color: var(--muted); font-weight: 500; margin-left: 2px; }
+
+    .nav-links { display: flex; gap: 18px; margin-left: auto; font-size: 14px; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .controls { display: flex; gap: 8px; align-items: center; }
+    .chip {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .chip:hover { border-color: color-mix(in srgb, var(--ink) 25%, transparent); }
+    .chip:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+
+    .hero { padding: 88px 0 56px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+    .eyebrow {
+      color: var(--seal);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(40px, 5.6vw, 68px);
+      line-height: 1.08;
+      margin: 0 0 8px;
+      letter-spacing: 0.08em;
+    }
+    .subname { font-size: clamp(20px, 2.4vw, 28px); color: var(--muted); font-weight: 500; margin: 0 0 22px; letter-spacing: 0.02em; }
+    .lede { font-size: 18px; color: var(--muted); max-width: 38em; margin: 0 0 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-primary { background: var(--ink); color: var(--bg); }
+    .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+    .meta { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+    .window {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(24px);
+    }
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #D9D4CB; }
+    html[data-theme="dark"] .dot { background: #3A3B36; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .dot { background: #3A3B36; }
+    }
+    .window-title { margin-left: 8px; font-size: 12px; color: var(--muted); }
+    .window-body { display: grid; grid-template-columns: 0.7fr 1.2fr 0.9fr; min-height: 280px; }
+    .pane { padding: 14px; }
+    .pane + .pane { border-left: 1px solid var(--line); }
+    .thumb { height: 42px; border-radius: 8px; background: var(--bg-accent); margin-bottom: 8px; }
+    .thumb.active { outline: 2px solid var(--seal); outline-offset: 2px; }
+    .preview {
+      border-radius: 12px;
+      height: 100%;
+      min-height: 230px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent 40%),
+        linear-gradient(135deg, #8AA3A0, #3E4F4A 55%, #2A2E2C);
+      position: relative;
+    }
+    html[data-theme="light"] .preview, :root:not([data-theme="dark"]) .preview {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), transparent 40%),
+        linear-gradient(135deg, #9BB3B0, #5A6E69 55%, #3C4441);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .preview {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.06), transparent 40%),
+          linear-gradient(135deg, #4A5C5A, #232826 55%, #161816);
+      }
+    }
+    .mark {
+      position: absolute;
+      right: 18%;
+      bottom: 16%;
+      width: 72px;
+      height: 72px;
+      border: 1.5px dashed rgba(255,255,255,0.85);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.92);
+      font-family: var(--serif);
+      font-size: 28px;
+      background: rgba(179, 57, 45, 0.28);
+    }
+    .seg {
+      display: flex;
+      background: var(--bg-accent);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+      font-size: 12px;
+    }
+    .seg span { flex: 1; text-align: center; padding: 6px 0; border-radius: 999px; color: var(--muted); }
+    .seg span.on { background: var(--surface-solid); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .hint { margin-top: 10px; font-size: 11px; color: var(--muted); }
+
+    section { padding: 28px 0 12px; }
+    h2 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .section-lead { color: var(--muted); margin: 0 0 28px; max-width: 40em; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 22px 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step-num { font-family: var(--serif); color: var(--seal); font-size: 28px; line-height: 1; margin-bottom: 8px; }
+
+    .privacy, .download-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .privacy ul { margin: 12px 0 0; padding-left: 1.05em; color: var(--muted); }
+    .privacy li { margin: 8px 0; }
+
+    .download-card { display: flex; justify-content: space-between; gap: 28px; align-items: center; }
+    .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+    footer {
+      padding: 48px 0 64px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 48px;
+    }
+
+    @media (max-width: 860px) {
+      .hero, .window-body, .grid, .steps, .download-card, .nav-links { display: block; }
+      .hero { padding-top: 48px; }
+      .window { margin-top: 8px; }
+      .pane + .pane { border-left: 0; border-top: 1px solid var(--line); }
+      .nav-links { display: none; }
+      .preview { min-height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top">
+        <span class="seal" aria-hidden="true">脱</span>
+        <span class="brand-name">脱敏水印 <span class="brand-en">Safe Photo Mark</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features" data-i18n="nav_features">功能</a>
+        <a href="#privacy" data-i18n="nav_privacy">隐私</a>
+        <a href="#download" data-i18n="nav_download">获取</a>
+      </nav>
+      <div class="controls">
+        <label class="visually-hidden" for="lang" data-i18n="lang_label" style="position:absolute;left:-9999px">语言</label>
+        <select id="lang" class="chip" aria-label="Language">
+          <option value="zh-Hans">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+        </select>
+        <button type="button" id="theme" class="chip" aria-label="Theme">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">macOS · Apple Silicon</p>
+        <h1>脱敏水印</h1>
+        <p class="subname">Safe Photo Mark</p>
+        <p class="lede" data-i18n="lede">给照片批量加上透明水印，并在导出时清除拍摄信息。原生 macOS 应用，只在你的 Mac 上处理，不会覆盖原图。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#download" data-i18n="cta_download">获取应用</a>
+          <a class="btn btn-ghost" href="#features" data-i18n="cta_features">了解功能</a>
+        </div>
+        <p class="meta" data-i18n="hero_meta">需要 macOS 14 或更高版本，仅支持 Apple 芯片。</p>
+      </div>
+      <div class="window" aria-hidden="true">
+        <div class="window-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="window-title">脱敏水印 · Safe Photo Mark</span>
+        </div>
+        <div class="window-body">
+          <div class="pane">
+            <div class="thumb active"></div>
+            <div class="thumb"></div>
+            <div class="thumb"></div>
+          </div>
+          <div class="pane">
+            <div class="preview"><div class="mark">脱</div></div>
+          </div>
+          <div class="pane">
+            <div class="seg">
+              <span data-i18n="mode_manual">手动</span>
+              <span class="on" data-i18n="mode_random">随机</span>
+              <span data-i18n="mode_fixed">固定</span>
+            </div>
+            <p class="hint" data-i18n="mode_random_hint">每张照片的水印会随机放置，并避开画面中心 30% 区域。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="wrap" id="features">
+      <h2 data-i18n="features_title">功能</h2>
+      <p class="section-lead" data-i18n="features_lead">为批量处理照片而设计：导入、预览、加水印、清除元数据，一次完成。</p>
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="f1_t">透明 PNG / SVG 水印</h3>
+          <p data-i18n="f1_d">叠加透明底 PNG 或 SVG，可调整大小与透明度。SVG 会按目标尺寸重新绘制，避免放大发糊。</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="f2_t">手动、随机或固定位置</h3>
+          <p data-i18n="f2_d">一行切换三种方式。可在预览中拖动水印；随机模式会避开画面正中 30% 区域，且整枚水印不出画。</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="f3_t">支持 HEIF 等主流格式</h3>
+          <p data-i18n="f3_d">可读 JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP，以及系统能解码的 WebP。可导出为 JPEG、PNG、HEIF 或 TIFF。</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="f4_t">移除元数据</h3>
+          <p data-i18n="f4_d">默认开启。清除相机与镜头参数、拍摄时间、地理位置、描述与版权、厂家私有数据、缩略图，以及相机自带的颜色配置，统一输出为 sRGB。</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="f5_t">随机重命名</h3>
+          <p data-i18n="f5_d">可选把输出改成 12 位随机文件名，避免像 IMG_XXXX-XX-XX 这样的文件名暴露拍摄日期。</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="f6_t">不覆盖原图，完全本地</h3>
+          <p data-i18n="f6_d">结果只写到你指定的文件夹。应用在沙盒中运行，不访问网络，照片不会离开这台 Mac。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="how">
+      <h2 data-i18n="how_title">使用方式</h2>
+      <p class="section-lead" data-i18n="how_lead">三步即可开始。</p>
+      <div class="steps">
+        <article class="card">
+          <div class="step-num">1</div>
+          <h3 data-i18n="h1_t">导入照片</h3>
+          <p data-i18n="h1_d">拖入照片或文件夹，也可以用选择面板批量加入。</p>
+        </article>
+        <article class="card">
+          <div class="step-num">2</div>
+          <h3 data-i18n="h2_t">设定水印</h3>
+          <p data-i18n="h2_d">放入 PNG 或 SVG，调整大小、透明度和位置方式，在预览里确认效果。</p>
+        </article>
+        <article class="card">
+          <div class="step-num">3</div>
+          <h3 data-i18n="h3_t">开始处理</h3>
+          <p data-i18n="h3_d">选择输出文件夹与格式，开始处理后可在 Finder 中查看结果。完成后可播放提示音。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="privacy">
+      <div class="privacy">
+        <h2 data-i18n="privacy_title">隐私与安全</h2>
+        <p class="section-lead" data-i18n="privacy_lead" style="margin-bottom:0">处理始终在本机完成，原图保持不动。</p>
+        <ul>
+          <li data-i18n="p1">没有网络权限，不会上传照片或设置。</li>
+          <li data-i18n="p2">只读写你通过拖放或系统面板选中的文件和文件夹。</li>
+          <li data-i18n="p3">开启「移除元数据」时，输出是全新写入的文件，不会从原图拷贝 EXIF、GPS、IPTC/XMP、MakerNote 等信息。</li>
+          <li data-i18n="p4">界面语言提供简体中文、繁体中文、英语、日语和韩语，跟随系统或可在系统设置中单独指定。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap" id="download">
+      <div class="download-card">
+        <div>
+          <h2 data-i18n="dl_title">即将在 GitHub 发布</h2>
+          <p class="section-lead" data-i18n="dl_lead" style="margin-bottom:0">脱敏水印 Safe Photo Mark 3.0 是原生 Swift / SwiftUI 应用，面向 macOS 14+ 与 Apple 芯片。仓库准备好后，可在此页下载。</p>
+          <p class="note" data-i18n="dl_note">目前请用 Xcode 打开工程，在自己的 Mac 上编译运行。</p>
+        </div>
+        <a class="btn btn-primary" href="#" aria-disabled="true" data-i18n="dl_btn">GitHub 即将开放</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>脱敏水印 · Safe Photo Mark</strong>
+      <span> · </span>
+      <span data-i18n="footer">macOS 原生应用，在本地为照片添加水印。</span>
+      <span> · </span>
+      <a href="mailto:izja16xyz@gmail.com">izja16xyz@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const I18N = {
+      "zh-Hans": {
+        title: "脱敏水印 Safe Photo Mark",
+        description: "脱敏水印 Safe Photo Mark：在 Apple 芯片 Mac 上为照片批量添加水印，并在导出时清除元数据。全部本地处理。",
+        nav_features: "功能", nav_privacy: "隐私", nav_download: "获取", lang_label: "语言",
+        eyebrow: "macOS · Apple Silicon",
+        lede: "给照片批量加上透明水印，并在导出时清除拍摄信息。原生 macOS 应用，只在你的 Mac 上处理，不会覆盖原图。",
+        cta_download: "获取应用", cta_features: "了解功能",
+        hero_meta: "需要 macOS 14 或更高版本，仅支持 Apple 芯片。",
+        mode_manual: "手动", mode_random: "随机", mode_fixed: "固定",
+        mode_random_hint: "每张照片的水印会随机放置，并避开画面中心 30% 区域。",
+        features_title: "功能",
+        features_lead: "为批量处理照片而设计：导入、预览、加水印、清除元数据，一次完成。",
+        f1_t: "透明 PNG / SVG 水印", f1_d: "叠加透明底 PNG 或 SVG，可调整大小与透明度。SVG 会按目标尺寸重新绘制，避免放大发糊。",
+        f2_t: "手动、随机或固定位置", f2_d: "一行切换三种方式。可在预览中拖动水印；随机模式会避开画面正中 30% 区域，且整枚水印不出画。",
+        f3_t: "支持 HEIF 等主流格式", f3_d: "可读 JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP，以及系统能解码的 WebP。可导出为 JPEG、PNG、HEIF 或 TIFF。",
+        f4_t: "移除元数据", f4_d: "默认开启。清除相机与镜头参数、拍摄时间、地理位置、描述与版权、厂家私有数据、缩略图，以及相机自带的颜色配置，统一输出为 sRGB。",
+        f5_t: "随机重命名", f5_d: "可选把输出改成 12 位随机文件名，避免像 IMG_XXXX-XX-XX 这样的文件名暴露拍摄日期。",
+        f6_t: "不覆盖原图，完全本地", f6_d: "结果只写到你指定的文件夹。应用在沙盒中运行，不访问网络，照片不会离开这台 Mac。",
+        how_title: "使用方式", how_lead: "三步即可开始。",
+        h1_t: "导入照片", h1_d: "拖入照片或文件夹，也可以用选择面板批量加入。",
+        h2_t: "设定水印", h2_d: "放入 PNG 或 SVG，调整大小、透明度和位置方式，在预览里确认效果。",
+        h3_t: "开始处理", h3_d: "选择输出文件夹与格式，开始处理后可在 Finder 中查看结果。完成后可播放提示音。",
+        privacy_title: "隐私与安全",
+        privacy_lead: "处理始终在本机完成，原图保持不动。",
+        p1: "没有网络权限，不会上传照片或设置。",
+        p2: "只读写你通过拖放或系统面板选中的文件和文件夹。",
+        p3: "开启「移除元数据」时，输出是全新写入的文件，不会从原图拷贝 EXIF、GPS、IPTC/XMP、MakerNote 等信息。",
+        p4: "界面语言提供简体中文、繁体中文、英语、日语和韩语，跟随系统或可在系统设置中单独指定。",
+        dl_title: "即将在 GitHub 发布",
+        dl_lead: "脱敏水印 Safe Photo Mark 3.0 是原生 Swift / SwiftUI 应用，面向 macOS 14+ 与 Apple 芯片。仓库准备好后，可在此页下载。",
+        dl_note: "目前请用 Xcode 打开工程，在自己的 Mac 上编译运行。",
+        dl_btn: "GitHub 即将开放",
+        footer: "macOS 原生应用，在本地为照片添加水印。"
+      },
+      "zh-Hant": {
+        title: "脱敏水印 Safe Photo Mark",
+        description: "脱敏水印 Safe Photo Mark：在 Apple 晶片 Mac 上為照片批次加上浮水印，並在匯出時清除中繼資料。全部於本機處理。",
+        nav_features: "功能", nav_privacy: "隱私", nav_download: "取得", lang_label: "語言",
+        eyebrow: "macOS · Apple Silicon",
+        lede: "為照片批次加上透明浮水印，並在匯出時清除拍攝資訊。原生 macOS 應用程式，只在你的 Mac 上處理，不會覆蓋原圖。",
+        cta_download: "取得應用程式", cta_features: "了解功能",
+        hero_meta: "需要 macOS 14 或更高版本，僅支援 Apple 晶片。",
+        mode_manual: "手動", mode_random: "隨機", mode_fixed: "固定",
+        mode_random_hint: "每張照片的浮水印會隨機放置，並避開畫面中心 30% 區域。",
+        features_title: "功能",
+        features_lead: "為批次處理照片而設計：匯入、預覽、加上浮水印、清除中繼資料，一次完成。",
+        f1_t: "透明 PNG / SVG 浮水印", f1_d: "疊加透明底 PNG 或 SVG，可調整大小與透明度。SVG 會依目標尺寸重新繪製，避免放大變糊。",
+        f2_t: "手動、隨機或固定位置", f2_d: "一行切換三種方式。可在預覽中拖曳浮水印；隨機模式會避開畫面正中 30% 區域，且整枚浮水印不出界。",
+        f3_t: "支援 HEIF 等主流格式", f3_d: "可讀 JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP，以及系統能解碼的 WebP。可匯出為 JPEG、PNG、HEIF 或 TIFF。",
+        f4_t: "移除中繼資料", f4_d: "預設開啟。清除相機與鏡頭參數、拍攝時間、地理位置、描述與版權、廠商私有資料、縮圖，以及相機自帶的色彩描述檔，統一輸出為 sRGB。",
+        f5_t: "隨機重新命名", f5_d: "可選擇將輸出改成 12 位隨機檔名，避免像 IMG_XXXX-XX-XX 這樣的檔名暴露拍攝日期。",
+        f6_t: "不覆蓋原圖，完全本機", f6_d: "結果只寫到你指定的資料夾。應用程式在沙盒中執行，不連線網路，照片不會離開這台 Mac。",
+        how_title: "使用方式", how_lead: "三個步驟即可開始。",
+        h1_t: "匯入照片", h1_d: "拖入照片或資料夾，也可以用選擇面板批次加入。",
+        h2_t: "設定浮水印", h2_d: "放入 PNG 或 SVG，調整大小、透明度和位置方式，在預覽裡確認效果。",
+        h3_t: "開始處理", h3_d: "選擇輸出資料夾與格式，開始處理後可在 Finder 中查看結果。完成後可播放提示音。",
+        privacy_title: "隱私與安全",
+        privacy_lead: "處理始終在本機完成，原圖保持不動。",
+        p1: "沒有網路權限，不會上傳照片或設定。",
+        p2: "只讀寫你透過拖放或系統面板選取的檔案和資料夾。",
+        p3: "開啟「移除中繼資料」時，輸出是全新寫入的檔案，不會從原圖複製 EXIF、GPS、IPTC/XMP、MakerNote 等資訊。",
+        p4: "介面語言提供簡體中文、繁體中文、英語、日語和韓語，跟隨系統或可在系統設定中單獨指定。",
+        dl_title: "即將在 GitHub 發布",
+        dl_lead: "脱敏水印 Safe Photo Mark 3.0 是原生 Swift / SwiftUI 應用程式，面向 macOS 14+ 與 Apple 晶片。儲存庫準備好後，可在此頁下載。",
+        dl_note: "目前請用 Xcode 開啟專案，在自己的 Mac 上編譯執行。",
+        dl_btn: "GitHub 即將開放",
+        footer: "macOS 原生應用程式，在本機為照片加上浮水印。"
+      },
+      en: {
+        title: "Safe Photo Mark",
+        description: "Safe Photo Mark is a native macOS app for Apple silicon that batch-adds watermarks to photos and strips metadata on export. Everything stays on your Mac.",
+        nav_features: "Features", nav_privacy: "Privacy", nav_download: "Get the app", lang_label: "Language",
+        eyebrow: "macOS · Apple Silicon",
+        lede: "Batch-add transparent watermarks to your photos and strip capture metadata on export. A native macOS app that runs only on your Mac and never overwrites originals.",
+        cta_download: "Get the app", cta_features: "See features",
+        hero_meta: "Requires macOS 14 or later, Apple silicon only.",
+        mode_manual: "Manual", mode_random: "Random", mode_fixed: "Fixed",
+        mode_random_hint: "Each photo gets a random placement that avoids the center 30% of the frame.",
+        features_title: "Features",
+        features_lead: "Built for batch work: import, preview, watermark, and strip metadata in one pass.",
+        f1_t: "Transparent PNG / SVG marks", f1_d: "Overlay a transparent PNG or SVG, with size and opacity controls. SVGs are redrawn at the target size so they stay sharp.",
+        f2_t: "Manual, random, or fixed placement", f2_d: "Switch modes in one row. Drag the mark in the preview; Random keeps it out of the center 30% and fully on the canvas.",
+        f3_t: "HEIF and other still formats", f3_d: "Reads JPEG, PNG, HEIF/HEIC, TIFF, GIF, BMP, and WebP when the system can decode it. Export to JPEG, PNG, HEIF, or TIFF.",
+        f4_t: "Metadata removal", f4_d: "On by default. Clears camera and lens data, capture time, GPS, captions and copyright, maker notes, thumbnails, and the camera’s ICC profile. Output is sRGB.",
+        f5_t: "Random filenames", f5_d: "Optionally rename exports with a 12-character random stem, so names like IMG_XXXX-XX-XX don’t reveal the capture date.",
+        f6_t: "Originals stay put, fully local", f6_d: "Results are written only to the folder you choose. The app is sandboxed, has no network access, and photos never leave this Mac.",
+        how_title: "How it works", how_lead: "Three steps to get started.",
+        h1_t: "Add photos", h1_d: "Drop in photos or a folder, or use the file picker to import several at once.",
+        h2_t: "Set the watermark", h2_d: "Add a PNG or SVG, adjust size, opacity, and placement, and check the preview.",
+        h3_t: "Start processing", h3_d: "Choose an output folder and format, then start. Reveal results in Finder when you’re done. A completion sound is optional.",
+        privacy_title: "Privacy and safety",
+        privacy_lead: "Processing stays on your Mac. Originals are left untouched.",
+        p1: "There is no network entitlement, so photos and settings are never uploaded.",
+        p2: "The app can only read and write files and folders you select by drag-and-drop or a system panel.",
+        p3: "When Strip Metadata is on, the output is written as a new file and does not copy EXIF, GPS, IPTC/XMP, or MakerNote data from the original.",
+        p4: "The interface is available in Simplified Chinese, Traditional Chinese, English, Japanese, and Korean, following the system or a per-app setting.",
+        dl_title: "Coming to GitHub",
+        dl_lead: "Safe Photo Mark 3.0 is a native Swift / SwiftUI app for macOS 14+ on Apple silicon. A download will appear here once the repository is ready.",
+        dl_note: "For now, open the Xcode project and build it on your Mac.",
+        dl_btn: "GitHub coming soon",
+        footer: "A native macOS app that watermarks photos on your Mac."
+      },
+      ja: {
+        title: "脱敏水印 Safe Photo Mark",
+        description: "脱敏水印 Safe Photo Mark は、Apple シリコンの Mac で写真に一括で透かしを入れ、書き出し時にメタデータを削除するネイティブ macOS アプリです。処理はすべて本機で行います。",
+        nav_features: "機能", nav_privacy: "プライバシー", nav_download: "入手", lang_label: "言語",
+        eyebrow: "macOS · Apple Silicon",
+        lede: "写真に透明な透かしを一括で追加し、書き出し時に撮影情報を削除します。ネイティブの macOS アプリで、処理は Mac 上のみ。元画像は上書きしません。",
+        cta_download: "アプリを入手", cta_features: "機能を見る",
+        hero_meta: "macOS 14 以降、Apple シリコン専用です。",
+        mode_manual: "手動", mode_random: "ランダム", mode_fixed: "固定",
+        mode_random_hint: "各写真の透かしはランダムに配置され、画面中央 30% を避けます。",
+        features_title: "機能",
+        features_lead: "読み込み、プレビュー、透かし、メタデータ削除まで、まとめて処理できます。",
+        f1_t: "透明な PNG / SVG の透かし", f1_d: "透明な PNG または SVG を重ね、サイズと不透明度を調整できます。SVG は対象サイズで再描画されるため、拡大してもぼやけにくいです。",
+        f2_t: "手動・ランダム・固定の配置", f2_d: "一行で切り替え。プレビュー上でドラッグできます。ランダムでは画面中央 30% を避け、透かし全体がはみ出しません。",
+        f3_t: "HEIF など主要な静止画形式", f3_d: "JPEG、PNG、HEIF/HEIC、TIFF、GIF、BMP、およびシステムが読める WebP に対応。JPEG、PNG、HEIF、TIFF で書き出せます。",
+        f4_t: "メタデータの削除", f4_d: "初期状態でオンです。カメラやレンズ情報、撮影日時、位置情報、説明と著作権、メーカー独自データ、サムネイル、カメラの ICC プロファイルを削除し、sRGB で書き出します。",
+        f5_t: "ランダムなファイル名", f5_d: "出力を 12 桁のランダム名に変更でき、IMG_XXXX-XX-XX のような名前から撮影日が漏れません。",
+        f6_t: "元画像は残し、すべてローカル", f6_d: "結果は指定したフォルダにだけ書き出します。サンドボックスで動作し、ネットワークには接続しません。写真はこの Mac から出ません。",
+        how_title: "使い方", how_lead: "3 つの手順で始められます。",
+        h1_t: "写真を読み込む", h1_d: "写真やフォルダをドロップするか、パネルからまとめて追加します。",
+        h2_t: "透かしを設定する", h2_d: "PNG または SVG を入れ、サイズ、不透明度、配置を調整してプレビューで確認します。",
+        h3_t: "処理を開始する", h3_d: "出力フォルダと形式を選び、開始します。完了後は Finder で結果を表示でき、通知音も選べます。",
+        privacy_title: "プライバシーと安全",
+        privacy_lead: "処理は常に本機で行われ、元画像はそのまま残ります。",
+        p1: "ネットワーク権限がないため、写真や設定がアップロードされることはありません。",
+        p2: "ドラッグ＆ドロップまたはシステムのパネルで選んだファイルとフォルダだけを読み書きします。",
+        p3: "「メタデータを削除」がオンのとき、出力は新規ファイルとして書き出され、元画像から EXIF、GPS、IPTC/XMP、MakerNote などはコピーしません。",
+        p4: "インターフェイスは簡体字中国語、繁体字中国語、英語、日本語、韓国語に対応し、システム、またはアプリごとに設定できます。",
+        dl_title: "GitHub で近日公開",
+        dl_lead: "脱敏水印 Safe Photo Mark 3.0 は、macOS 14 以降の Apple シリコン向けネイティブ Swift / SwiftUI アプリです。リポジトリの準備ができ次第、このページから入手できます。",
+        dl_note: "現時点では Xcode でプロジェクトを開き、お使いの Mac でビルドしてください。",
+        dl_btn: "GitHub 準備中",
+        footer: "Mac 上で写真に透かしを入れる、ネイティブ macOS アプリです。"
+      },
+      ko: {
+        title: "脱敏水印 Safe Photo Mark",
+        description: "脱敏水印 Safe Photo Mark는 Apple 실리콘 Mac에서 사진에 워터마크를 일괄 추가하고, 내보낼 때 메타데이터를 제거하는 네이티브 macOS 앱입니다. 모든 처리는 이 Mac에서만 이루어집니다.",
+        nav_features: "기능", nav_privacy: "개인정보", nav_download: "받기", lang_label: "언어",
+        eyebrow: "macOS · Apple Silicon",
+        lede: "사진에 투명 워터마크를 일괄로 넣고, 내보낼 때 촬영 정보를 지웁니다. 네이티브 macOS 앱으로, 이 Mac에서만 처리하며 원본을 덮어쓰지 않습니다.",
+        cta_download: "앱 받기", cta_features: "기능 보기",
+        hero_meta: "macOS 14 이상, Apple 실리콘 전용입니다.",
+        mode_manual: "수동", mode_random: "무작위", mode_fixed: "고정",
+        mode_random_hint: "각 사진의 워터마크는 화면 중앙 30%를 피해 무작위로 배치됩니다.",
+        features_title: "기능",
+        features_lead: "가져오기, 미리보기, 워터마크, 메타데이터 제거까지 한 번에 처리하도록 만들었습니다.",
+        f1_t: "투명 PNG / SVG 워터마크", f1_d: "투명 PNG 또는 SVG를 올리고 크기와 투명도를 조절할 수 있습니다. SVG는 대상 크기로 다시 그려져 확대해도 흐려지기 어렵습니다.",
+        f2_t: "수동, 무작위 또는 고정 위치", f2_d: "한 줄에서 세 가지 방식을 바꿉니다. 미리보기에서 드래그할 수 있고, 무작위 모드에서는 화면 정중앙 30%를 피하며 워터마크가 화면 밖으로 나가지 않습니다.",
+        f3_t: "HEIF 등 주요 정지 화상 형식", f3_d: "JPEG, PNG, HEIF/HEIC, TIFF, GIF, BMP와 시스템이 읽을 수 있는 WebP를 지원합니다. JPEG, PNG, HEIF 또는 TIFF로 내보낼 수 있습니다.",
+        f4_t: "메타데이터 제거", f4_d: "기본으로 켜져 있습니다. 카메라와 렌즈 정보, 촬영 시각, 위치, 설명과 저작권, 제조사 고유 데이터, 썸네일, 카메라 ICC 프로필을 지우고 sRGB로 출력합니다.",
+        f5_t: "무작위 파일 이름", f5_d: "출력 파일을 12자리 무작위 이름으로 바꿀 수 있어, IMG_XXXX-XX-XX 같은 이름에서 촬영 날짜가 드러나지 않습니다.",
+        f6_t: "원본은 그대로, 완전히 로컬", f6_d: "결과는 지정한 폴더에만 저장됩니다. 앱은 샌드박스에서 실행되고 네트워크에 접속하지 않으며, 사진은 이 Mac을 떠나지 않습니다.",
+        how_title: "사용 방법", how_lead: "세 단계로 시작할 수 있습니다.",
+        h1_t: "사진 가져오기", h1_d: "사진이나 폴더를 끌어다 놓거나, 선택 패널에서 여러 장을 추가합니다.",
+        h2_t: "워터마크 설정", h2_d: "PNG 또는 SVG를 넣고 크기, 투명도, 위치를 조절한 뒤 미리보기에서 확인합니다.",
+        h3_t: "처리 시작", h3_d: "출력 폴더와 형식을 고른 뒤 시작합니다. 완료되면 Finder에서 결과를 볼 수 있고, 알림음도 선택할 수 있습니다.",
+        privacy_title: "개인정보와 보안",
+        privacy_lead: "처리는 항상 이 컴퓨터에서 이루어지며, 원본은 그대로 둡니다.",
+        p1: "네트워크 권한이 없어 사진이나 설정이 업로드되지 않습니다.",
+        p2: "드래그 앤 드롭이나 시스템 패널로 선택한 파일과 폴더만 읽고 씁니다.",
+        p3: "「메타데이터 제거」가 켜져 있으면 출력은 새로 기록되며, 원본에서 EXIF, GPS, IPTC/XMP, MakerNote 등을 복사하지 않습니다.",
+        p4: "인터페이스는 중국어 간체, 중국어 번체, 영어, 일본어, 한국어를 지원하며, 시스템을 따르거나 앱별로 지정할 수 있습니다.",
+        dl_title: "GitHub에 곧 공개",
+        dl_lead: "脱敏水印 Safe Photo Mark 3.0은 macOS 14 이상, Apple 실리콘용 네이티브 Swift / SwiftUI 앱입니다. 저장소가 준비되면 이 페이지에서 받을 수 있습니다.",
+        dl_note: "지금은 Xcode에서 프로젝트를 열어 사용 중인 Mac에서 빌드하세요.",
+        dl_btn: "GitHub 준비 중",
+        footer: "Mac에서 사진에 워터마크를 넣는 네이티브 macOS 앱입니다."
+      }
+    };
+
+    const langs = Object.keys(I18N);
+    const langSel = document.getElementById("lang");
+    const themeBtn = document.getElementById("theme");
+
+    function detectLang() {
+      const saved = localStorage.getItem("safephotomark-lang");
+      if (saved && I18N[saved]) return saved;
+      const list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+      for (const raw of list) {
+        const loc = (raw || "").toLowerCase();
+        if (loc.startsWith("zh-hant") || loc.startsWith("zh-tw") || loc.startsWith("zh-hk") || loc.startsWith("zh-mo")) return "zh-Hant";
+        if (loc.startsWith("zh")) return "zh-Hans";
+        if (loc.startsWith("ja")) return "ja";
+        if (loc.startsWith("ko")) return "ko";
+        if (loc.startsWith("en")) return "en";
+      }
+      return "zh-Hans";
+    }
+
+    function applyLang(lang) {
+      const pack = I18N[lang] || I18N["zh-Hans"];
+      document.documentElement.lang = lang;
+      document.title = pack.title;
+      const desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute("content", pack.description);
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (key && pack[key] != null) el.textContent = pack[key];
+      });
+      langSel.value = lang;
+      localStorage.setItem("safephotomark-lang", lang);
+    }
+
+    function themeLabel(mode) {
+      const map = {
+        "zh-Hans": { system: "自动", light: "浅色", dark: "深色" },
+        "zh-Hant": { system: "自動", light: "淺色", dark: "深色" },
+        en: { system: "Auto", light: "Light", dark: "Dark" },
+        ja: { system: "自動", light: "ライト", dark: "ダーク" },
+        ko: { system: "자동", light: "밝게", dark: "어둡게" }
+      };
+      const lang = langSel.value || "zh-Hans";
+      return (map[lang] || map.en)[mode];
+    }
+
+    function applyTheme(mode) {
+      document.documentElement.setAttribute("data-theme", mode);
+      localStorage.setItem("safephotomark-theme", mode);
+      themeBtn.textContent = themeLabel(mode);
+      themeBtn.setAttribute("aria-label", themeLabel(mode));
+    }
+
+    langSel.addEventListener("change", () => {
+      applyLang(langSel.value);
+      applyTheme(document.documentElement.getAttribute("data-theme") || "system");
+    });
+    themeBtn.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "system";
+      const next = cur === "system" ? "dark" : cur === "dark" ? "light" : "system";
+      applyTheme(next);
+    });
+
+    applyLang(detectLang());
+    applyTheme(localStorage.getItem("safephotomark-theme") || "system");
+  </script>
+</body>
+</html>

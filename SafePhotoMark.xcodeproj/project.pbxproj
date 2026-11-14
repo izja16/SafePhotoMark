@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62E3588158F81FFC7AD37FE6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BA0709E3AC0E3FAC99371 /* AppModel.swift */; };
+		079A37F910AE213FC9A3A33C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EEAB2FD2A3066706607403 /* ContentView.swift */; };
+		31E8758D0DE6520D4639EBDA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E37EFB76B9215DA62B95E2 /* Models.swift */; };
+		83AEE0769F6B3D4EDA230E2D /* BatchProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427B4511D6DBD75CB590ABC4 /* BatchProcessor.swift */; };
+		DAA70E8C98B1BA34AFB95AE2 /* ImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD393656051A5A0628D4AD06 /* ImageDecoder.swift */; };
+		1686E63D0BA576B05CC2E91F /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5BA4BF0822CB2344AD61D /* ImageExporter.swift */; };
+		8B4C8B2F79B5659E27E7008B /* WatermarkCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC6E4518411B1C6FB9BA25 /* WatermarkCompositor.swift */; };
+		ED61FD351D516235E75C5E20 /* WatermarkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95639D305CE3C0487590C050 /* WatermarkLoader.swift */; };
+		C124175A44C0A9D1932A7B6A /* SafePhotoMarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CF9EDE934885E43D4AD20A /* SafePhotoMarkApp.swift */; };
+		0359988868F171BBAB12A2B1 /* SecurityScopedAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6976178D97DCABACF747E51F /* SecurityScopedAccess.swift */; };
+		1453B803069945805E84A808 /* DropZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F7C0FD55072F65CA06967 /* DropZone.swift */; };
+		CA346DAE038E9A2278AF6FBD /* InspectorPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C1560F51F75C43CEC280E /* InspectorPane.swift */; };
+		C8E1A47B2F6D4C0A91B3D5E2 /* ControlStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D2C6E15B384F7A80C1E4F3 /* ControlStyling.swift */; };
+		7FDCF90176C182CC7C00EEE6 /* PhotoListPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4010CFE5720B21697D3DDD55 /* PhotoListPane.swift */; };
+		8E986955FF72B03A6E7B8E6A /* PreviewPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2E051F1C7C1D740C727143 /* PreviewPane.swift */; };
+		CEB52C7848F2E9D96D986F22 /* WatermarkWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3F8B27A46B166D3D3FD9C /* WatermarkWell.swift */; };
+		85E6AE60199CA79273EDE9F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4709C024420ED6BC0DEEF853 /* Assets.xcassets */; };
+		3F8A1C6E2B9D4750A4C8E1F7 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91E2A04B8D4F6A9E13C5D2 /* L10n.swift */; };
+		9A4C7E12F6B8402D93C5A8E1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5D2B8E71A0C34F9B86E4D1A3 /* Localizable.xcstrings */; };
+		E4B7C19D2A8F4C6E91B0D3A5 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D1C8E47A6B9F4A2C83E5D704 /* InfoPlist.xcstrings */; };
+		383451C2C5F628BDB8DBA52D /* SwiftDraw in Frameworks */ = {isa = PBXBuildFile; productRef = A6A7A9F1EFC4DF51675A3624 /* SwiftDraw */; };
+		A11F01A0B2C34D5E8F701001 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702001 /* SettingsStore.swift */; };
+		A11F01A0B2C34D5E8F701002 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702002 /* ImportService.swift */; };
+		A11F01A0B2C34D5E8F701003 /* ExportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702003 /* ExportCoordinator.swift */; };
+		A11F01A0B2C34D5E8F701004 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702004 /* ImageCache.swift */; };
+		A11F01A0B2C34D5E8F701101 /* WatermarkGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702101 /* WatermarkGeometryTests.swift */; };
+		A11F01A0B2C34D5E8F701102 /* ExportUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702102 /* ExportUtilitiesTests.swift */; };
+		A11F01A0B2C34D5E8F701103 /* PrivacyExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F01A0B2C34D5E8F702103 /* PrivacyExportTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D36BA0709E3AC0E3FAC99371 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		E0EEAB2FD2A3066706607403 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		13E37EFB76B9215DA62B95E2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		427B4511D6DBD75CB590ABC4 /* BatchProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchProcessor.swift; sourceTree = "<group>"; };
+		DD393656051A5A0628D4AD06 /* ImageDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDecoder.swift; sourceTree = "<group>"; };
+		EAE5BA4BF0822CB2344AD61D /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
+		DFFC6E4518411B1C6FB9BA25 /* WatermarkCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkCompositor.swift; sourceTree = "<group>"; };
+		95639D305CE3C0487590C050 /* WatermarkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkLoader.swift; sourceTree = "<group>"; };
+		F7CF9EDE934885E43D4AD20A /* SafePhotoMarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafePhotoMarkApp.swift; sourceTree = "<group>"; };
+		6976178D97DCABACF747E51F /* SecurityScopedAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityScopedAccess.swift; sourceTree = "<group>"; };
+		D75F7C0FD55072F65CA06967 /* DropZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropZone.swift; sourceTree = "<group>"; };
+		4A2C1560F51F75C43CEC280E /* InspectorPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPane.swift; sourceTree = "<group>"; };
+		A9D2C6E15B384F7A80C1E4F3 /* ControlStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlStyling.swift; sourceTree = "<group>"; };
+		4010CFE5720B21697D3DDD55 /* PhotoListPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListPane.swift; sourceTree = "<group>"; };
+		4E2E051F1C7C1D740C727143 /* PreviewPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPane.swift; sourceTree = "<group>"; };
+		E8A3F8B27A46B166D3D3FD9C /* WatermarkWell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkWell.swift; sourceTree = "<group>"; };
+		4709C024420ED6BC0DEEF853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F870EF3ECBA206AC15806D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C91E2A04B8D4F6A9E13C5D2 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		5D2B8E71A0C34F9B86E4D1A3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D1C8E47A6B9F4A2C83E5D704 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		626F41AFA3349AF1CC368B6E /* SafePhotoMark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafePhotoMark.entitlements; sourceTree = "<group>"; };
+		026C2C6F03B3E499443B75AA /* SafePhotoMark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafePhotoMark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11F01A0B2C34D5E8F702001 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702002 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702003 /* ExportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportCoordinator.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702004 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702101 /* WatermarkGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkGeometryTests.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702102 /* ExportUtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtilitiesTests.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F702103 /* PrivacyExportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyExportTests.swift; sourceTree = "<group>"; };
+		A11F01A0B2C34D5E8F703001 /* SafePhotoMarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafePhotoMarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1136C3DA6052FF199C163B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				383451C2C5F628BDB8DBA52D /* SwiftDraw in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11F01A0B2C34D5E8F704001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+
+/* Begin PBXGroup section */
+		8E4E65D4F29CC401D93DB6C1 = {
+			isa = PBXGroup;
+			children = (
+				A834B51CD645E99B5CAC0ADF /* SafePhotoMark */,
+				A11F01A0B2C34D5E8F705001 /* SafePhotoMarkTests */,
+				2B463036D15F23C561B49FE6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A834B51CD645E99B5CAC0ADF /* SafePhotoMark */ = {
+			isa = PBXGroup;
+			children = (
+				D36BA0709E3AC0E3FAC99371 /* AppModel.swift */,
+				A11F01A0B2C34D5E8F702001 /* SettingsStore.swift */,
+				A11F01A0B2C34D5E8F702002 /* ImportService.swift */,
+				A11F01A0B2C34D5E8F702003 /* ExportCoordinator.swift */,
+				E0EEAB2FD2A3066706607403 /* ContentView.swift */,
+				13E37EFB76B9215DA62B95E2 /* Models.swift */,
+				7C91E2A04B8D4F6A9E13C5D2 /* L10n.swift */,
+				5D2B8E71A0C34F9B86E4D1A3 /* Localizable.xcstrings */,
+				D1C8E47A6B9F4A2C83E5D704 /* InfoPlist.xcstrings */,
+				F7CF9EDE934885E43D4AD20A /* SafePhotoMarkApp.swift */,
+				29674DD15F44AA63F148D595 /* Processing */,
+				CD3C2C5DF5FDE50C695BAC02 /* Views */,
+				54848AEC104B02CE202FD364 /* Utilities */,
+				4709C024420ED6BC0DEEF853 /* Assets.xcassets */,
+				9F870EF3ECBA206AC15806D4 /* Info.plist */,
+				626F41AFA3349AF1CC368B6E /* SafePhotoMark.entitlements */,
+			);
+			path = SafePhotoMark;
+			sourceTree = "<group>";
+		};
+		29674DD15F44AA63F148D595 /* Processing */ = {
+			isa = PBXGroup;
+			children = (
+				427B4511D6DBD75CB590ABC4 /* BatchProcessor.swift */,
+				DD393656051A5A0628D4AD06 /* ImageDecoder.swift */,
+				EAE5BA4BF0822CB2344AD61D /* ImageExporter.swift */,
+				DFFC6E4518411B1C6FB9BA25 /* WatermarkCompositor.swift */,
+				95639D305CE3C0487590C050 /* WatermarkLoader.swift */,
+			);
+			path = Processing;
+			sourceTree = "<group>";
+		};
+		CD3C2C5DF5FDE50C695BAC02 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D75F7C0FD55072F65CA06967 /* DropZone.swift */,
+				A9D2C6E15B384F7A80C1E4F3 /* ControlStyling.swift */,
+				4A2C1560F51F75C43CEC280E /* InspectorPane.swift */,
+				4010CFE5720B21697D3DDD55 /* PhotoListPane.swift */,
+				4E2E051F1C7C1D740C727143 /* PreviewPane.swift */,
+				E8A3F8B27A46B166D3D3FD9C /* WatermarkWell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		54848AEC104B02CE202FD364 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6976178D97DCABACF747E51F /* SecurityScopedAccess.swift */,
+				A11F01A0B2C34D5E8F702004 /* ImageCache.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A11F01A0B2C34D5E8F705001 /* SafePhotoMarkTests */ = {
+			isa = PBXGroup;
+			children = (
+				A11F01A0B2C34D5E8F702101 /* WatermarkGeometryTests.swift */,
+				A11F01A0B2C34D5E8F702102 /* ExportUtilitiesTests.swift */,
+				A11F01A0B2C34D5E8F702103 /* PrivacyExportTests.swift */,
+			);
+			path = SafePhotoMarkTests;
+			sourceTree = "<group>";
+		};
+		2B463036D15F23C561B49FE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				026C2C6F03B3E499443B75AA /* SafePhotoMark.app */,
+				A11F01A0B2C34D5E8F703001 /* SafePhotoMarkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+
+/* Begin PBXNativeTarget section */
+		B644917DAAD1D65DFC92A574 /* SafePhotoMark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A8C4E346F9E1F67B2C9047D /* Build configuration list for PBXNativeTarget "SafePhotoMark" */;
+			buildPhases = (
+				2409D9F00DD30E5A07CCD794 /* Sources */,
+				E1136C3DA6052FF199C163B6 /* Frameworks */,
+				BE719848944949F152E7E200 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafePhotoMark;
+			packageProductDependencies = (
+				A6A7A9F1EFC4DF51675A3624 /* SwiftDraw */,
+			);
+			productName = SafePhotoMark;
+			productReference = 026C2C6F03B3E499443B75AA /* SafePhotoMark.app */;
+			productType = "com.apple.product-type.application";
+		};
+
+		A11F01A0B2C34D5E8F706001 /* SafePhotoMarkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A11F01A0B2C34D5E8F707001 /* Build configuration list for PBXNativeTarget "SafePhotoMarkTests" */;
+			buildPhases = (
+				A11F01A0B2C34D5E8F704101 /* Sources */,
+				A11F01A0B2C34D5E8F704001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A11F01A0B2C34D5E8F708001 /* PBXTargetDependency */,
+			);
+			name = SafePhotoMarkTests;
+			productName = SafePhotoMarkTests;
+			productReference = A11F01A0B2C34D5E8F703001 /* SafePhotoMarkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+
+/* Begin PBXProject section */
+		DD3CA8E441CE930A869F8FBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				ORGANIZATIONNAME = "脱敏水印";
+				TargetAttributes = {
+					B644917DAAD1D65DFC92A574 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A11F01A0B2C34D5E8F706001 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B644917DAAD1D65DFC92A574;
+					};
+				};
+			};
+			buildConfigurationList = 50892C6544C77B8CA57F8069 /* Build configuration list for PBXProject "SafePhotoMark" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
+				ko,
+				Base,
+			);
+			mainGroup = 8E4E65D4F29CC401D93DB6C1;
+			packageReferences = (
+				363DB1F5EF434A00E7AF753A /* XCLocalSwiftPackageReference "Vendor/SwiftDraw" */,
+			);
+			productRefGroup = 2B463036D15F23C561B49FE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B644917DAAD1D65DFC92A574 /* SafePhotoMark */,
+				A11F01A0B2C34D5E8F706001 /* SafePhotoMarkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE719848944949F152E7E200 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85E6AE60199CA79273EDE9F7 /* Assets.xcassets in Resources */,
+				9A4C7E12F6B8402D93C5A8E1 /* Localizable.xcstrings in Resources */,
+				E4B7C19D2A8F4C6E91B0D3A5 /* InfoPlist.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2409D9F00DD30E5A07CCD794 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62E3588158F81FFC7AD37FE6 /* AppModel.swift in Sources */,
+				079A37F910AE213FC9A3A33C /* ContentView.swift in Sources */,
+				31E8758D0DE6520D4639EBDA /* Models.swift in Sources */,
+				3F8A1C6E2B9D4750A4C8E1F7 /* L10n.swift in Sources */,
+				83AEE0769F6B3D4EDA230E2D /* BatchProcessor.swift in Sources */,
+				DAA70E8C98B1BA34AFB95AE2 /* ImageDecoder.swift in Sources */,
+				1686E63D0BA576B05CC2E91F /* ImageExporter.swift in Sources */,
+				8B4C8B2F79B5659E27E7008B /* WatermarkCompositor.swift in Sources */,
+				ED61FD351D516235E75C5E20 /* WatermarkLoader.swift in Sources */,
+				C124175A44C0A9D1932A7B6A /* SafePhotoMarkApp.swift in Sources */,
+				0359988868F171BBAB12A2B1 /* SecurityScopedAccess.swift in Sources */,
+				1453B803069945805E84A808 /* DropZone.swift in Sources */,
+				CA346DAE038E9A2278AF6FBD /* InspectorPane.swift in Sources */,
+				C8E1A47B2F6D4C0A91B3D5E2 /* ControlStyling.swift in Sources */,
+				7FDCF90176C182CC7C00EEE6 /* PhotoListPane.swift in Sources */,
+				8E986955FF72B03A6E7B8E6A /* PreviewPane.swift in Sources */,
+				CEB52C7848F2E9D96D986F22 /* WatermarkWell.swift in Sources */,
+				A11F01A0B2C34D5E8F701001 /* SettingsStore.swift in Sources */,
+				A11F01A0B2C34D5E8F701002 /* ImportService.swift in Sources */,
+				A11F01A0B2C34D5E8F701003 /* ExportCoordinator.swift in Sources */,
+				A11F01A0B2C34D5E8F701004 /* ImageCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11F01A0B2C34D5E8F704101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11F01A0B2C34D5E8F701101 /* WatermarkGeometryTests.swift in Sources */,
+				A11F01A0B2C34D5E8F701102 /* ExportUtilitiesTests.swift in Sources */,
+				A11F01A0B2C34D5E8F701103 /* PrivacyExportTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+
+/* Begin PBXContainerItemProxy section */
+		A11F01A0B2C34D5E8F708101 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD3CA8E441CE930A869F8FBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B644917DAAD1D65DFC92A574;
+			remoteInfo = SafePhotoMark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		A11F01A0B2C34D5E8F708001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B644917DAAD1D65DFC92A574 /* SafePhotoMark */;
+			targetProxy = A11F01A0B2C34D5E8F708101 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CC5A64AD4630945FE23C6559 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ARCHS = arm64;
+				EXCLUDED_ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A57E051172F3BD01C5498056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ARCHS = arm64;
+				EXCLUDED_ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		63FF3814EB821C09ACD7A983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafePhotoMark/SafePhotoMark.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = x86_64;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SafePhotoMark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.safephotomark.SafePhotoMark;
+				PRODUCT_NAME = SafePhotoMark;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		C472173BF973D8E13A57D6B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SafePhotoMark/SafePhotoMark.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = x86_64;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SafePhotoMark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.safephotomark.SafePhotoMark;
+				PRODUCT_NAME = SafePhotoMark;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+
+		A11F01A0B2C34D5E8F707101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = x86_64;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.safephotomark.SafePhotoMarkTests;
+				PRODUCT_NAME = SafePhotoMarkTests;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafePhotoMark.app/Contents/MacOS/SafePhotoMark";
+			};
+			name = Debug;
+		};
+		A11F01A0B2C34D5E8F707102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = x86_64;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.safephotomark.SafePhotoMarkTests;
+				PRODUCT_NAME = SafePhotoMarkTests;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafePhotoMark.app/Contents/MacOS/SafePhotoMark";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+
+/* Begin XCConfigurationList section */
+		50892C6544C77B8CA57F8069 /* Build configuration list for PBXProject "SafePhotoMark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5A64AD4630945FE23C6559 /* Debug */,
+				A57E051172F3BD01C5498056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A8C4E346F9E1F67B2C9047D /* Build configuration list for PBXNativeTarget "SafePhotoMark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63FF3814EB821C09ACD7A983 /* Debug */,
+				C472173BF973D8E13A57D6B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A11F01A0B2C34D5E8F707001 /* Build configuration list for PBXNativeTarget "SafePhotoMarkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A11F01A0B2C34D5E8F707101 /* Debug */,
+				A11F01A0B2C34D5E8F707102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		363DB1F5EF434A00E7AF753A /* XCLocalSwiftPackageReference "Vendor/SwiftDraw" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Vendor/SwiftDraw;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A6A7A9F1EFC4DF51675A3624 /* SwiftDraw */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 363DB1F5EF434A00E7AF753A /* XCLocalSwiftPackageReference "Vendor/SwiftDraw" */;
+			productName = SwiftDraw;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DD3CA8E441CE930A869F8FBB /* Project object */;
+}
